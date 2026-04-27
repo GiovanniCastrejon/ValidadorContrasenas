@@ -4,14 +4,6 @@ from tkinter import ttk, messagebox, END
 
 regex = r"^(?=.*[A-Z])(?=.*[!@#$%&.*]).{8,}$"
 
-def validar(password):
-    return bool(re.match(regex, password))
-
-print(validar("Hola123!"))  # True
-print(validar("hola1234"))  # False
-print(validar("12113A4."))
-print(validar("1a2b3@cF"))  # False
-
 root = tk.Tk()
 root.title("Validador de contraseñas")
 root.geometry("600x400")
@@ -43,7 +35,14 @@ def salir(event):
 contraseña.bind("<FocusIn>", entrar)
 contraseña.bind("<FocusOut>", salir)
 
-boton_verificador = tk.Button(root, text="Verificar")
+def validar(password):
+    if contraseña.get() == "Introduce tu contraseña" or contraseña.get() == "":
+        messagebox.showwarning("Advertencia", "Por favor, introduce una contraseña.")
+        return False
+    else:
+        return bool(re.match(regex, password))
+
+boton_verificador = tk.Button(root, text="Verificar", command=lambda: messagebox.showinfo("Resultado", "Contraseña segura" if validar(contraseña.get()) else "Contraseña insegura"))
 boton_verificador.config(fg="white", bg="green", font=("Arial", 12))
 boton_verificador.place(x = 260, y = 200)
 
