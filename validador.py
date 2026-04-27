@@ -1,21 +1,65 @@
+import tkinter as tk
+from tkinter import ttk, messagebox, END
+
+root = tk.Tk()
+root.title("Validador de contraseñas")
+root.geometry("600x400")
+icono = tk.PhotoImage(file = "logo.png")
+root.iconphoto(True, icono)
+root.configure(bg = "light grey")
+
+
+titulo = tk.Label(root, text= "Valida que tan segura es tu contraseña")
+titulo.config(bg= "light grey", font= ("Times New Roman", 16, "bold"))
+titulo.place(x = 125, y = 60)
+
+contraseña = tk.Entry(root, bg="white", font=("Arial",11))
+contraseña.place(x=215, y=150)
+
+contraseña.insert(0, "Introduce tu contraseña")
+contraseña.config(fg="gray")
+
+def entrar(event):
+    if contraseña.get() == "Introduce tu contraseña":
+        contraseña.delete(0, END)
+        contraseña.config(fg="black")
+
+def salir(event):
+    if contraseña.get() == "":
+        contraseña.insert(0, "Introduce tu contraseña")
+        contraseña.config(fg="gray", show="")
+
+contraseña.bind("<FocusIn>", entrar)
+contraseña.bind("<FocusOut>", salir)
+
 def validar_password(password):
     tiene_mayus = False
     tiene_signo = False
 
     signos = "!@#$%&*."
+    
+    if contraseña.get() == "Introduce tu contraseña" or contraseña.get() == "":
+        messagebox.showwarning("Advertencia", "Por favor, introduce una contraseña.")
+        return False
+    else:
+        for c in password:
+            if c.isupper():
+                tiene_mayus = True
+            if c in signos:
+                tiene_signo = True
 
-    for c in password:
-        if c.isupper():
-            tiene_mayus = True
-        if c in signos:
-            tiene_signo = True
+        if len(password) >= 8 and tiene_mayus and tiene_signo:
+            return True
+        return False
 
-    if len(password) >= 8 and tiene_mayus and tiene_signo:
-        return True
-    return False
+boton_verificador = tk.Button(root, text="Verificar", command=lambda: messagebox.showinfo("Resultado", "Tu contraseña es segura" if validar_password(contraseña.get()) 
+                                                                                          else "Contraseña insegura. Debe contener al menos: \n"
+                                                                                          "1. 8 caracteres\n"
+                                                                                          "2. Una mayuscula\n"
+                                                                                          "3. Un digito\n"
+                                                                                          "4. Un simbolo\n"
+                                                                                          "\nSigue el ejemplo: Hola123@"))
+boton_verificador.config(fg="white", bg="green", font=("Arial", 12))
+boton_verificador.place(x = 260, y = 200)
 
-
-# Prueba
-print(validar_password("Hola123!"))  # True
-print(validar_password("hola1234"))  # False
-print(validar_password("12113A4."))  # False
+root.mainloop()
