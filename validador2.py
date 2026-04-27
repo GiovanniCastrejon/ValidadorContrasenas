@@ -22,10 +22,10 @@ root.configure(bg = "light grey")
 
 titulo = tk.Label(root, text= "Valida que tan segura es tu contraseña")
 titulo.config(bg= "light grey", font= ("Times New Roman", 16, "bold"))
-titulo.place(x = 120, y = 60)
+titulo.place(x = 125, y = 60)
 
 contraseña = tk.Entry(root, bg="white", font=("Arial",11))
-contraseña.place(x=225, y=150)
+contraseña.place(x=215, y=150)
 
 contraseña.insert(0, "Introduce tu contraseña")
 contraseña.config(fg="gray")
@@ -42,5 +42,9 @@ def salir(event):
 
 contraseña.bind("<FocusIn>", entrar)
 contraseña.bind("<FocusOut>", salir)
+
+boton_verificador = tk.Button(root, text="Verificar")
+boton_verificador.config(fg="white", bg="green", font=("Arial", 12))
+boton_verificador.place(x = 260, y = 200)
 
 root.mainloop()
