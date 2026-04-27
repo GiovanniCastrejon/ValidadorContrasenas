@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-print("Hola Alan, eres muy feo y agradable")
-=======
 def validar_password(password):
     tiene_mayus = False
     tiene_signo = False
@@ -22,4 +19,4 @@ def validar_password(password):
 print(validar_password("Hola123!"))  # True
 print(validar_password("hola1234"))  # False
 print(validar_password("12113A4."))  # False
->>>>>>> 31b8218d3f7cd2404ae5b60c40581f1b8015dadb
+
