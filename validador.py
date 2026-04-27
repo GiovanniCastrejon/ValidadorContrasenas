@@ -49,20 +49,6 @@ contraseña = tk.Entry(
 contraseña.place(x=115, y=125, width=250, height=32)
 
 contraseña.insert(0, "Introduce tu contraseña")
-icono = tk.PhotoImage(file = "logo.png")
-root.iconphoto(True, icono)
-root.configure(bg = "light grey")
-
-
-titulo = tk.Label(root, text= "Valida que tan segura es tu contraseña")
-titulo.config(bg= "light grey", font= ("Times New Roman", 16, "bold"))
-titulo.place(x = 125, y = 60)
-
-contraseña = tk.Entry(root, bg="white", font=("Arial",11))
-contraseña.place(x=215, y=150)
-
-contraseña.insert(0, "Introduce tu contraseña")
-contraseña.config(fg="gray")
 
 def entrar(event):
     if contraseña.get() == "Introduce tu contraseña":
@@ -90,30 +76,16 @@ def validar_password(password):
     tiene_signo = False
 
     signos = "!@#$%&*."
-    
-    if contraseña.get() == "Introduce tu contraseña" or contraseña.get() == "":
-        messagebox.showwarning("Advertencia", "Por favor, introduce una contraseña.")
-        return False
-    else:
-        for c in password:
-            if c.isupper():
-                tiene_mayus = True
-            if c in signos:
-                tiene_signo = True
 
-        if len(password) >= 8 and tiene_mayus and tiene_signo:
-            return True
-        return False
+    for c in password:
+        if c.isupper():
+            tiene_mayus = True
+        if c in signos:
+            tiene_signo = True
 
-boton_verificador = tk.Button(root, text="Verificar", command=lambda: messagebox.showinfo("Resultado", "Tu contraseña es segura" if validar_password(contraseña.get()) 
-                                                                                          else "Contraseña insegura. Debe contener al menos: \n"
-                                                                                          "1. 8 caracteres\n"
-                                                                                          "2. Una mayuscula\n"
-                                                                                          "3. Un digito\n"
-                                                                                          "4. Un simbolo\n"
-                                                                                          "\nSigue el ejemplo: Hola123@"))
-boton_verificador.config(fg="white", bg="green", font=("Arial", 12))
-boton_verificador.place(x = 260, y = 200)
+    if len(password) >= 8 and tiene_mayus and tiene_signo:
+        return True
+    return False
 
 # Botón verificar
 boton_verificador = tk.Button(
