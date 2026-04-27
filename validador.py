@@ -19,4 +19,3 @@ def validar_password(password):
 print(validar_password("Hola123!"))  # True
 print(validar_password("hola1234"))  # False
 print(validar_password("12113A4."))  # False
-
