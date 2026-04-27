@@ -42,7 +42,13 @@ def validar(password):
     else:
         return bool(re.match(regex, password))
 
-boton_verificador = tk.Button(root, text="Verificar", command=lambda: messagebox.showinfo("Resultado", "Contraseña segura" if validar(contraseña.get()) else "Contraseña insegura"))
+boton_verificador = tk.Button(root, text="Verificar", command=lambda: messagebox.showinfo("Resultado", "Tu contraseña es segura" if validar(contraseña.get()) 
+                                                                                          else "Contraseña insegura. Debe contener al menos: \n"
+                                                                                          "1. 8 caracteres\n"
+                                                                                          "2. Una mayuscula\n"
+                                                                                          "3. Un digito\n"
+                                                                                          "4. Un simbolo\n"
+                                                                                          "\nSigue el ejemplo: Hola123@"))
 boton_verificador.config(fg="white", bg="green", font=("Arial", 12))
 boton_verificador.place(x = 260, y = 200)
 
