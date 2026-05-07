@@ -2,7 +2,7 @@ import re
 import tkinter as tk
 from tkinter import ttk, messagebox, END
 
-regex = r"^(?=.*[A-Z])(?=.*[!@#$%&.*]).{8,}$"
+regex = r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&.*]).{8,}$"
 
 root = tk.Tk()
 root.title("Validador de contraseñas")
