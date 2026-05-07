@@ -74,6 +74,7 @@ def validar(password):
 def validar_password(password):
     tiene_mayus = False
     tiene_signo = False
+    tiene_digito = False
 
     signos = "!@#$%&*."
 
@@ -82,8 +83,10 @@ def validar_password(password):
             tiene_mayus = True
         if c in signos:
             tiene_signo = True
+        if c .isdigit():
+            tiene_digito = True
 
-    if len(password) >= 8 and tiene_mayus and tiene_signo:
+    if len(password) >= 8 and tiene_mayus and tiene_signo and tiene_digito:
         return True
     return False
 
