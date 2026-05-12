@@ -86,7 +86,7 @@ def validar_password(password):
         if c .isdigit():
             tiene_digito = True
 
-    if len(password) >= 8 and tiene_mayus and tiene_signo and tiene_digito:
+    if len(password) >= 5 and tiene_mayus and tiene_signo and tiene_digito:
         return True
     return False
 
@@ -99,7 +99,7 @@ boton_verificador = tk.Button(
         "Tu contraseña es segura"
         if validar(contraseña.get())
         else "Contraseña insegura. Debe contener al menos: \n"
-             "1. 8 caracteres\n"
+             "1. 5 caracteres\n"
              "2. Una mayúscula\n"
              "3. Un dígito\n"
              "4. Un símbolo\n"
