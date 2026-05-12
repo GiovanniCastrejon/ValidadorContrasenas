@@ -2,7 +2,7 @@ import re
 import tkinter as tk
 from tkinter import ttk, messagebox, END
 
-regex = r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&.*]).{8,}$"
+regex = r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&.*]).{5,}$"
 
 root = tk.Tk()
 root.title("Validador de contraseñas")
@@ -80,7 +80,7 @@ boton_verificador = tk.Button(
         "Resultado",
         "Tu contraseña es segura" if validar(contraseña.get())
         else "Contraseña insegura. Debe contener al menos: \n"
-             "1. 8 caracteres\n"
+             "1. 5 caracteres\n"
              "2. Una mayuscula\n"
              "3. Un digito\n"
              "4. Un simbolo\n"
